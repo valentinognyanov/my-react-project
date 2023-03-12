@@ -8,6 +8,7 @@ import { Profile } from './components/Profile';
 import { About } from './components/About';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
+import { PageNotFound } from './components/PageNotFound';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
             </header>
             <main className='App-main'>
                 <Routes>
-                    <Route path='/*' element={<h1>404</h1>} />
+                    <Route path='/*' element={<PageNotFound />} />
                     <Route path='/' element={<Home />} />
                     <Route path='/profile/*' element={<Profile />} />
                     <Route path='/catalog' element={<Catalog />} />

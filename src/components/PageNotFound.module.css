@@ -1,0 +1,35 @@
+.message-box {
+    position: center;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-weight: 50px;
+}
+
+.message-box h1 {
+    font-size: 150px;
+    line-height: 46px;
+    margin-bottom: 0px;
+}
+
+.message-box p {
+    font-size: 40px;
+    margin-top: 28px;
+}
+
+.message-box a {
+    background: #68c950;
+    padding: 8px 25px;
+    border-radius: 4px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px
+}
+
+.message-box a:hover {
+    background-color: #282c34;
+}
