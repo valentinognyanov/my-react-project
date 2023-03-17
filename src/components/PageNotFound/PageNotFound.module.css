@@ -4,12 +4,14 @@
     left: 50%;
     color: white;
     font-weight: 50px;
+    text-align: center;
 }
 
 .message-box h1 {
     font-size: 150px;
     line-height: 46px;
     margin-bottom: 0px;
+    margin-top: 100px;
 }
 
 .message-box p {
@@ -32,4 +34,5 @@
 
 .message-box a:hover {
     background-color: #282c34;
+    color: white;
 }

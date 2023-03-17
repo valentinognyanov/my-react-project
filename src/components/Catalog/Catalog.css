@@ -1,0 +1,9 @@
+/* .card {
+    width: 12rem;
+    position: center;
+} */
+
+.card-title {
+    text-align: center;
+    font-size: 25px;
+}
