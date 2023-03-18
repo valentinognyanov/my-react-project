@@ -1,9 +1,12 @@
+import './Search.css';
+
 export const Search = () => {
     return (
-        <h1 style={{ 
-            color: 'white', 
-            textAlign: 'center',
-            marginTop: '20px' 
-        }}>Search Page</h1>
+        <div className="wrap">
+            <div className="search">
+                <input type="text" className="searchTerm" placeholder="Search..." />
+                <button type="submit" className="searchButton"></button>
+            </div>
+        </div>
     );
 };

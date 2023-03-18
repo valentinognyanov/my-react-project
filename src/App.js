@@ -13,6 +13,7 @@ import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { Search } from './components/Search/Search';
 import { Create } from './components/Create/Create';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
 
@@ -25,24 +26,27 @@ function App() {
             })
     }, []);
     return (
-        <div className="App">
-            <header className="App-header">
-                <MainNavigation />
-            </header>
-            <main className='App-main'>
-                <Routes>
-                    <Route path='/*' element={<PageNotFound />} />
-                    <Route path='/' element={<Home />} />
-                    <Route path='/catalog' element={<Catalog movies={movies} />} />
-                    <Route path='/search' element={<Search />} />
-                    <Route path='/create' element={<Create />} />
-                    <Route path='/profile/*' element={<Profile />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/login' element={<Login />} />
-                </Routes>
-            </main>
-        </div>
+        <>
+            <div className="App">
+                <header className="App-header">
+                    <MainNavigation />
+                </header>
+                <main className='App-main'>
+                    <Routes>
+                        <Route path='/*' element={<PageNotFound />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/catalog' element={<Catalog movies={movies} />} />
+                        <Route path='/search' element={<Search />} />
+                        <Route path='/create' element={<Create />} />
+                        <Route path='/profile/*' element={<Profile />} />
+                        <Route path='/about' element={<About />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/login' element={<Login />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
+        </>
     );
 }
 
