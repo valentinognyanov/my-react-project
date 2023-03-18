@@ -10,6 +10,9 @@ import { About } from './components/About/About';
 import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { Search } from './components/Search/Search';
+import { Create } from './components/Create/Create';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -30,8 +33,10 @@ function App() {
                 <Routes>
                     <Route path='/*' element={<PageNotFound />} />
                     <Route path='/' element={<Home />} />
-                    <Route path='/profile/*' element={<Profile />} />
                     <Route path='/catalog' element={<Catalog movies={movies} />} />
+                    <Route path='/search' element={<Search />} />
+                    <Route path='/create' element={<Create />} />
+                    <Route path='/profile/*' element={<Profile />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/login' element={<Login />} />

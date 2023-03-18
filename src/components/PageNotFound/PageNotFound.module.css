@@ -1,10 +1,10 @@
 .message-box {
     position: center;
-    top: 50%;
     left: 50%;
     color: white;
     font-weight: 50px;
     text-align: center;
+    height: calc(70% - 40px);
 }
 
 .message-box h1 {
@@ -25,7 +25,7 @@
     border-radius: 4px;
     color: #FFF;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 17px;
     transition: all 0.2s linear;
     cursor: pointer;
     text-decoration: none;

@@ -8,6 +8,8 @@ export const MainNavigation = () => {
         <Navigation>
             <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/" >Home</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/catalog" >Catalog</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/search" >Search</NavLink></li>
+            <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/create" >Add a movie</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/profile/:userId" >My Profile</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/about" >About</NavLink></li>
             <li><NavLink className={({isActive}) => isActive ? styles['nav-active'] : '' } to="/register" >Register</NavLink></li>

@@ -1,9 +1,9 @@
-export const Profile = () => {
+export const Search = () => {
     return (
         <h1 style={{ 
             color: 'white', 
             textAlign: 'center',
             marginTop: '20px' 
-        }}>My Profile</h1>
+        }}>Search Page</h1>
     );
 };

@@ -1,9 +1,20 @@
-/* .card {
-    width: 12rem;
-    position: center;
-} */
-
-.card-title {
+.card {
+    float: left;
+    width: 13rem;
+    padding: 0 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-    font-size: 25px;
+    background-color: #f1f1f1;
+    margin-left: 15px;
+}
+
+.catalog-body {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.no-movies {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
 }

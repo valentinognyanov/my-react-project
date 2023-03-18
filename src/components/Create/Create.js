@@ -1,9 +1,9 @@
-export const Profile = () => {
+export const Create = () => {
     return (
         <h1 style={{ 
             color: 'white', 
             textAlign: 'center',
             marginTop: '20px' 
-        }}>My Profile</h1>
+        }}>Add a Movie</h1>
     );
 };
