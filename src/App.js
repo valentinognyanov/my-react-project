@@ -49,11 +49,11 @@ function App() {
                         <Route path='/catalog' element={<Catalog movies={movies} />} />
                         <Route path='/search' element={<Search />} />
                         <Route path='/create' element={<Create onCreateMovieSubmit={onCreateMovieSubmit} />} />
-                        <Route path='/profile/*' element={<Profile />} />
+                        <Route path='/profile/:userId' element={<Profile />} />
                         <Route path='/about' element={<About />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/details/*' element={<Details />} />
+                        <Route path='/details/:movieId' element={<Details />} />
                     </Routes>
                 </main>
                 <Footer />

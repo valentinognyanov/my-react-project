@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Card = ({
     _id,
@@ -13,7 +13,7 @@ export const Card = ({
                 <div className="info">
                     <h1>{`${title} (${year})`}</h1>
                     <p>{genres.join(', ')}</p>
-                    <NavLink to={`/details/${_id}`}>Details</NavLink>
+                    <Link to={`/details/${_id}`}>Details</Link>
                 </div>
             </div>
         </div>
