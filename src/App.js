@@ -12,8 +12,9 @@ import { Login } from './components/Login/Login';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { Search } from './components/Search/Search';
 import { Create } from './components/Create/Create';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Footer } from './components/Footer/Footer';
+import { Details } from './components/Details/Details';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
                         <Route path='/about' element={<About />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/details/*' element={<Details />} />
                     </Routes>
                 </main>
                 <Footer />

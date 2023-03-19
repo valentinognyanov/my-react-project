@@ -1,3 +1,5 @@
+import './Create.css';
+
 export const Create = () => {
     return (
         <h1 style={{ 
