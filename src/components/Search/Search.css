@@ -1,11 +1,10 @@
 .search {
-    width: 100%;
+    width: 1800px;
     position: relative;
-    display: flex;
 }
 
 .searchTerm {
-    width: 100%;
+    width: 180px;
     border: 3px solid white;
     border-right: none;
     padding: 5px;
@@ -27,8 +26,7 @@
 }
 
 .wrap {
-    width: 30%;
     position: absolute;
-    top: 25%;
-    left: 35%;
+    margin-top: 50px;
+    margin-left: 30%;
 }
