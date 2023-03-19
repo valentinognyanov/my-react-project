@@ -6,41 +6,46 @@ export const Create = () => {
             <h3>Add a movie</h3>
             <div className='create-form'>
                 <form method='POST'>
-                    <label htmlFor="title">Title</label>
                     <input type="text" id="title" name="title" placeholder="Title.." />
 
-                    <label htmlFor="year">Year</label>
                     <input type="number" id="year" name="year" placeholder="Year.." />
 
-                    <label htmlFor="runtime">Runtime</label>
                     <input type="number" id="runtime" name="runtime" placeholder="Runtime.." />
 
-                    <label htmlFor="director">Director</label>
                     <input type="text" id="director" name="director" placeholder="Director.." />
 
-                    <label htmlFor="actors">Actors</label>
                     <input type="text" id="actors" name="actors" placeholder="Actors.." />
 
-                    <label htmlFor="plot">Plot</label>
-                    <textarea type="text" id="plot" name="plot" placeholder="Plot.." />
-                    
-                    <label htmlFor="genre">Genre</label>
-                    <select id="genre" name="genre">
-                        <option value="comedy">Comedy</option>
-                        <option value="fantasy">Fantasy</option>
-                        <option value="crime">Crime</option>
-                        <option value="canada">Drama</option>
-                        <option value="canada">Music</option>
-                        <option value="canada">Adventure</option>
-                        <option value="canada">History</option>
-                        <option value="canada">Thriller</option>
-                        <option value="canada">Canada</option>
-                        <option value="canada">Animation</option>
-                        <option value="canada">Family</option>
-                        <option value="canada">Mystery</option>
-                        <option value="usa">USA</option>
-                    </select>
+                    <input type="text" id="imageUrl" name="imageUrl" placeholder="ImageUrl.." />
 
+                    <textarea type="text" id="plot" name="plot" placeholder="Plot.." />
+
+                    <div className='ganres-checkbox'>
+                        <div>
+                            <h4>Genres</h4>
+                            <input type="checkbox" name="choice" id="comedy" /><label htmlFor="comedy">Comedy</label>
+                            <input type="checkbox" name="choice" id="fantasy" /><label htmlFor="fantasy">Fantasy</label>
+                            <input type="checkbox" name="choice" id="crime" /><label htmlFor="crime">Crime</label>
+                            <input type="checkbox" name="choice" id="drama" /><label htmlFor="drama">Drama</label>
+                            <input type="checkbox" name="choice" id="music" /><label htmlFor="music">Music</label>
+                            <input type="checkbox" name="choice" id="adventure" /><label htmlFor="adventure">Adventure</label>
+                            <input type="checkbox" name="choice" id="history" /><label htmlFor="history">History</label>
+                            <input type="checkbox" name="choice" id="thriller" /><label htmlFor="thriller">Thriller</label>
+                            <input type="checkbox" name="choice" id="animation" /><label htmlFor="animation">Animation</label>
+                            <input type="checkbox" name="choice" id="family" /><label htmlFor="family">Family</label>
+                            <input type="checkbox" name="choice" id="mystery" /><label htmlFor="mystery">Mystery</label>
+                            <input type="checkbox" name="choice" id="biography" /><label htmlFor="biography">Biography</label>
+                            <input type="checkbox" name="choice" id="action" /><label htmlFor="action">Action</label>
+                            <input type="checkbox" name="choice" id="filmNoir" /><label htmlFor="filmNoir">Film-Noir</label>
+                            <input type="checkbox" name="choice" id="romance" /><label htmlFor="romance">Romance</label>
+                            <input type="checkbox" name="choice" id="sciFi" /><label htmlFor="sciFi">Sci-Fi</label>
+                            <input type="checkbox" name="choice" id="war" /><label htmlFor="war">War</label>
+                            <input type="checkbox" name="choice" id="western" /><label htmlFor="western">Western</label>
+                            <input type="checkbox" name="choice" id="horror" /><label htmlFor="horror">Horror</label>
+                            <input type="checkbox" name="choice" id="musical" /><label htmlFor="musical">Musical</label>
+                            <input type="checkbox" name="choice" id="sport" /><label htmlFor="sport">Sport</label>
+                        </div>
+                    </div>
                     <input type="submit" id='submit' value="Submit" />
                 </form>
             </div>
