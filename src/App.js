@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import * as movieService from './services/movieService';
 import { MainNavigation } from './components/Navigation/MainNavigation';
@@ -17,7 +17,8 @@ import { Details } from './components/Details/Details';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-
+    
+    const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -26,6 +27,15 @@ function App() {
                 setMovies(res)
             })
     }, []);
+
+    const onCreateMovieSubmit = async (data) => {
+        const newMovie = await movieService.create(data);
+        
+        setMovies(movies => [...movies, newMovie]);
+
+        navigate('/catalog');
+    };
+
     return (
         <>
             <div className="App">
@@ -38,7 +48,7 @@ function App() {
                         <Route path='/' element={<Home />} />
                         <Route path='/catalog' element={<Catalog movies={movies} />} />
                         <Route path='/search' element={<Search />} />
-                        <Route path='/create' element={<Create />} />
+                        <Route path='/create' element={<Create onCreateMovieSubmit={onCreateMovieSubmit} />} />
                         <Route path='/profile/*' element={<Profile />} />
                         <Route path='/about' element={<About />} />
                         <Route path='/register' element={<Register />} />

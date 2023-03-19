@@ -79,12 +79,12 @@ textarea {
     font-size: 12px;
 }
 
-.ganres-checkbox div {
+/* .ganres-checkbox div {
     display: inline !important;
     margin: 0;
     padding: 0;
     list-style: none !important;
-}
+} */
 
 .ganres-checkbox input[type="checkbox"],
 .ganres-checkbox input[type="radio"] {
@@ -93,6 +93,7 @@ textarea {
 
 .ganres-checkbox label {
     cursor: pointer;
+    font-weight: bold;
 }
 
 .ganres-checkbox input[type="checkbox"]+label:hover {
