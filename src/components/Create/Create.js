@@ -39,7 +39,7 @@ export const Create = ({
         <div className='create-div'>
             <h3>Add a movie</h3>
             <div className='create-form'>
-                <form id='create-form' onSubmit={onSubmit}>
+                <form id='create-form' method='POST' onSubmit={onSubmit}>
                     <input value={values.title} onChange={onChangeHandler} type="text" id="title" name="title" placeholder="Title.." />
 
                     <input value={values.year} onChange={onChangeHandler} type="number" id="year" name="year" placeholder="Year.." />

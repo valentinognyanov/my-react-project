@@ -42,13 +42,29 @@ function App() {
     };
 
     const onLoginSubmit = async (data) => {
-        const result = await authService.login(data);
 
-        console.log(result);
+        try {
+            const result = await authService.login(data);
+
+            setAuth(result);
+
+            navigate('/');
+            return result;
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    const context = {
+        onLoginSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken,
     };
 
     return (
-        <AuthContext.Provider value={{ onLoginSubmit }}>
+        <AuthContext.Provider value={context}>
             <div className="App">
                 <header className="App-header">
                     <MainNavigation />

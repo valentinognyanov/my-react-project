@@ -44,7 +44,7 @@ input[type=text] {
     color: #F1F1F2;
     width: 70%;
     height: 420px;
-    margin-left: 20%;
+    margin-left: 15%;
 }
 
 .create-div h3 {
@@ -53,7 +53,7 @@ input[type=text] {
     top: 20px;
     position: relative;
     width: 50%;
-    margin-left: 30%;
+    margin-left: 25%;
     text-align: center;
     margin-bottom: 20px;
 }
