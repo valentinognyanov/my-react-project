@@ -100,3 +100,9 @@
     background: #282c34;
     color: white;
 }
+
+.catalog-body h2 {
+    color: white;
+    text-align: center;
+    margin-top: 10%;
+}

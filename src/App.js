@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
+import * as authService from './services/authService';
 import * as movieService from './services/movieService';
+import { AuthContext } from './contexts/AuthContext';
+
 import { MainNavigation } from './components/Navigation/MainNavigation';
 import { Home } from './components/Home/Home';
 import { Catalog } from './components/Catalog/Catalog';
@@ -14,12 +17,14 @@ import { Search } from './components/Search/Search';
 import { Create } from './components/Create/Create';
 import { Footer } from './components/Footer/Footer';
 import { Details } from './components/Details/Details';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-    
+
     const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
+    const [auth, setAuth] = useState({});
 
     useEffect(() => {
         movieService.getAll()
@@ -30,14 +35,20 @@ function App() {
 
     const onCreateMovieSubmit = async (data) => {
         const newMovie = await movieService.create(data);
-        
+
         setMovies(movies => [...movies, newMovie]);
 
         navigate('/catalog');
     };
 
+    const onLoginSubmit = async (data) => {
+        const result = await authService.login(data);
+
+        console.log(result);
+    };
+
     return (
-        <>
+        <AuthContext.Provider value={{ onLoginSubmit }}>
             <div className="App">
                 <header className="App-header">
                     <MainNavigation />
@@ -58,7 +69,7 @@ function App() {
                 </main>
                 <Footer />
             </div>
-        </>
+        </AuthContext.Provider>
     );
 }
 

@@ -7,6 +7,9 @@ export const Search = () => {
                 <input type="text" className="searchTerm" placeholder="Search..." />
                 <button type="submit" className="searchButton"></button>
             </div>
+            <div className="search-result">
+                
+            </div>
         </div>
     );
 };

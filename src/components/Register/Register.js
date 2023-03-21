@@ -15,11 +15,14 @@ export const Register = () => {
                 <div className="right">
                     <div className="reg-form">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" />
+                        <input type="email" name="email" id="email" />
+
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" />
+                        <input type="password" name="password" id="password" />
+
                         <label htmlFor="password">Repeat Password</label>
-                        <input type="password" id="repeatPassword" />
+                        <input type="password" name="repeatPassword" id="repeatPassword" />
+
                         <input type="submit" id="submit" value="Register" />
                     </div>
                 </div>
