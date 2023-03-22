@@ -19,6 +19,7 @@ import { Footer } from './components/Footer/Footer';
 import { Details } from './components/Details/Details';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Logout } from './components/Logout/Logout';
 
 function App() {
 
@@ -55,8 +56,33 @@ function App() {
         }
     };
 
+    const onRegisterSubmit = async (values) => {
+        const { repeatPassword, ...registerData } = values;
+
+        if(repeatPassword !== registerData.password) {
+            return;
+        }
+
+        try {
+            const result = await authService.register(registerData);
+
+            setAuth(result);
+
+            navigate('/')
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+    const onLogout = async () => {
+        await authService.logout();
+
+        setAuth({});
+    };
+
     const context = {
         onLoginSubmit,
+        onRegisterSubmit,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
@@ -80,6 +106,7 @@ function App() {
                         <Route path='/about' element={<About />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/logout' element={<Logout onLogout={onLogout} />} />
                         <Route path='/details/:movieId' element={<Details />} />
                     </Routes>
                 </main>

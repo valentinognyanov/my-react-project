@@ -29,3 +29,9 @@
 .nav-active {
     background-color: black;
 }
+
+.navigation span {
+    color: white;
+    background-color: red;
+        margin-top: 50px !important;
+}
