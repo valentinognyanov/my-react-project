@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import * as authService from './services/authService';
-import * as movieService from './services/movieService';
+import { authServiceFactory } from './services/authService';
+import { movieServiceFactory } from './services/movieService';
 import { AuthContext } from './contexts/AuthContext';
 
 import { MainNavigation } from './components/Navigation/MainNavigation';
@@ -17,15 +17,18 @@ import { Search } from './components/Search/Search';
 import { Create } from './components/Create/Create';
 import { Footer } from './components/Footer/Footer';
 import { Details } from './components/Details/Details';
+import { Logout } from './components/Logout/Logout';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Logout } from './components/Logout/Logout';
+import { Edit } from './components/Edit/Edit';
 
 function App() {
 
     const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
     const [auth, setAuth] = useState({});
+    const movieService = movieServiceFactory(auth.accessToken);
+    const authService = authServiceFactory(auth.accessToken);
 
     useEffect(() => {
         movieService.getAll()
@@ -59,7 +62,7 @@ function App() {
     const onRegisterSubmit = async (values) => {
         const { repeatPassword, ...registerData } = values;
 
-        if(repeatPassword !== registerData.password) {
+        if (repeatPassword !== registerData.password) {
             return;
         }
 
@@ -80,9 +83,18 @@ function App() {
         setAuth({});
     };
 
+    const onMovieEditSubmit = async (values) => {
+        const result = await movieService.edit(values._id, values);
+
+        setMovies(state => state.map(x => x._id === values._id ? result : x))
+
+        navigate(`/details/${values._id}`);
+    }
+
     const context = {
         onLoginSubmit,
         onRegisterSubmit,
+        onLogout,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
@@ -100,14 +112,15 @@ function App() {
                         <Route path='/*' element={<PageNotFound />} />
                         <Route path='/' element={<Home />} />
                         <Route path='/catalog' element={<Catalog movies={movies} />} />
+                        <Route path='/edit/:movieId' element={<Edit onMovieEditSubmit={onMovieEditSubmit } />} />
+                        <Route path='/details/:movieId' element={<Details />} />
                         <Route path='/search' element={<Search />} />
                         <Route path='/create' element={<Create onCreateMovieSubmit={onCreateMovieSubmit} />} />
                         <Route path='/profile/:userId' element={<Profile />} />
                         <Route path='/about' element={<About />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/logout' element={<Logout onLogout={onLogout} />} />
-                        <Route path='/details/:movieId' element={<Details />} />
+                        <Route path='/logout' element={<Logout />} />
                     </Routes>
                 </main>
                 <Footer />
