@@ -7,7 +7,7 @@ import styles from './Navigation.module.css';
 
 export const MainNavigation = () => {
     const { isAuthenticated, userEmail } = useContext(AuthContext);
-    debugger;
+    
     return (
         <Navigation>
             <li><NavLink className={({ isActive }) => isActive ? styles['nav-active'] : ''} to="/" >Home</NavLink></li>
@@ -16,8 +16,7 @@ export const MainNavigation = () => {
             {isAuthenticated && (
                 <>
                     <li><NavLink className={({ isActive }) => isActive ? styles['nav-active'] : ''} to="/create" >Add a movie</NavLink></li>
-                    <li><NavLink className={({ isActive }) => isActive ? styles['nav-active'] : ''} to="/profile/:userId" >My Profile</NavLink></li>
-                    <span>Hello, {userEmail}</span>
+                    <li><NavLink className={({ isActive }) => isActive ? styles['nav-active'] : ''} to="/profile/:userId" >{userEmail}</NavLink></li>
                     <li><NavLink className={({ isActive }) => isActive ? styles['nav-active'] : ''} to="/logout" >Logout</NavLink></li>
                 </>
             )}
