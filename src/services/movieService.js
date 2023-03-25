@@ -14,7 +14,6 @@ export const movieServiceFactory = (token) => {
 
     const getOne = async (movieId) => {
         const result = await request.get(`${baseUrl}/${movieId}`);
-
         return result;
     };
 
@@ -24,11 +23,11 @@ export const movieServiceFactory = (token) => {
         return result;
     };
 
-    // const addComment = async (movieId, data) => {
-    //     const result = await request.post(`${baseUrl}/${movieId}/comments`, data);
+    const addComment = async (movieId, data) => {
+        const result = await request.post(`${baseUrl}/${movieId}/comments`, data);
 
-    //     return result;
-    // };
+        return result;
+    };
 
     const edit = async (movieId, data) => request.put(`${baseUrl}/${movieId}`, data);
 
@@ -40,6 +39,6 @@ export const movieServiceFactory = (token) => {
         create,
         edit,
         delete: del,
-        // addComment
+        addComment
     };
 };
