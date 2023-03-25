@@ -16,4 +16,50 @@
     width: 60%;
     height: 420px;
     margin-left: 20%;
+    float: left;
+}
+
+.movie-info img {
+    height: 50vh;
+    width: 50vh;
+}
+
+.movie-details button a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.details-comments {
+    background: white;
+    height: calc(100% - 40px);
+    top: 20px;
+    position: relative;
+    width: 40%;
+    margin-left: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.middle-con {
+    position: relative;
+    justify-content: space-around;
+}
+
+.movie-header 
+.director,
+.actors,
+.genre,
+.plot,
+.runtime {
+    font-size: 27px;
+}
+
+.details-btns {
+    float: right;
+    font-size: 25px;
+}
+
+.details-btns button {
+    margin-left: 7px;
 }

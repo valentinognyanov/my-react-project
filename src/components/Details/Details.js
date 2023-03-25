@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
 
 import { useService } from '../../hooks/useService';
 
+import { AuthContext } from '../../contexts/AuthContext';
 import { movieServiceFactory } from '../../services/movieService';
 import './Details.css';
 
@@ -25,31 +25,44 @@ export const Details = () => {
     const isOwner = movie._ownerId === userId;
 
     const onDeleteClick = async () => {
-        await movieService.delete(movie._id);
 
-        navigate('/catalog');
+        const confirmation = window.confirm('Are you sure you want to delete the movie ?');
+
+        if (confirmation) {
+            await movieService.delete(movie._id);
+
+            navigate('/catalog');
+        }
     }
 
     return (
         <section className='movie-details'>
             <h3 className='title'>{movie.title} ({movie.year})</h3>
-            <div className='movie-info'>
-                <div className='movie-header'>
-                    <img className='movie-img' src={movie.imageUrl} alt={movie.title} />
-                    <span className='director'>{movie.director}</span>
-                    <p className='genre'>{movie.genres}</p>
+            <div className='middle-con'>
+                <img className='movie-img' src={movie.imageUrl} alt={movie.title} />
+                <div className='movie-info'>
+                    <div className='movie-header'>
+                        <span className='director'>•Director: {movie.director}</span><br></br>
+                        <span className='actors'>•Actors: {movie.actors}</span><br></br>
+                        <span className='runtime'>•Runtime: {movie.runtime}</span>
+                        <p className='genre'>•Genre: {movie.genres}</p>
+                        <p className='plot'>•Plot: {movie.plot}</p>
+                    </div>
+                    {isOwner && (
+                        <div className='details-btns'>
+                            <button><Link to={`/edit/${movie._id}`}>Edit</Link></button>
+                            <button className='delete-btn' onClick={onDeleteClick}>Delete</button>
+                        </div>
+                    )}
                 </div>
-                <p className='plot'>{movie.plot}</p>
             </div>
             <div className='details-comments'>
-
+                <h2>Comments:</h2>
+                <ul>
+                    <li className='comment'></li>
+                </ul>
+                <p>No comments.</p>
             </div>
-            {isOwner && (
-                <div className='details-btns'>
-                    <Link to={`/edit/${movie._id}`}>Edit</Link>
-                    <button className='delete-btn' onClick={onDeleteClick}>Delete</button>
-                </div>
-            )}
         </section>
     );
 };

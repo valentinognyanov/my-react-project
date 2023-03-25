@@ -86,8 +86,7 @@ textarea {
     list-style: none !important;
 } */
 
-.ganres-checkbox input[type="checkbox"],
-.ganres-checkbox input[type="radio"] {
+.ganres-checkbox input[type="checkbox"] {
     display: none;
 }
 

@@ -18,9 +18,9 @@ import { Create } from './components/Create/Create';
 import { Footer } from './components/Footer/Footer';
 import { Details } from './components/Details/Details';
 import { Logout } from './components/Logout/Logout';
+import { Edit } from './components/Edit/Edit';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Edit } from './components/Edit/Edit';
 
 function App() {
 
@@ -35,7 +35,7 @@ function App() {
             .then(res => {
                 setMovies(res)
             })
-    }, []);
+    }, [movies]);
 
     const onCreateMovieSubmit = async (data) => {
         const newMovie = await movieService.create(data);
