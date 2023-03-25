@@ -8,8 +8,8 @@ import { movieServiceFactory } from '../../services/movieService';
 import './Details.css';
 
 export const Details = () => {
-    const { userId } = useContext(AuthContext);
-    // const [comment, setComment] = useState('');
+    const { userId, userEmail } = useContext(AuthContext);
+    const [comment, setComment] = useState('');
     const { movieId } = useParams();
     const [movie, setMovie] = useState({});
     const movieService = useService(movieServiceFactory);
@@ -18,11 +18,12 @@ export const Details = () => {
     useEffect(() => {
         movieService.getOne(movieId)
             .then(result => {
-                setMovie(result)
+                setMovie(result);
             })
     }, [movieId]);
 
     const isOwner = movie._ownerId === userId;
+    const isAuthenticated = !!userId;
 
     const onDeleteClick = async () => {
 
@@ -33,7 +34,19 @@ export const Details = () => {
 
             navigate('/catalog');
         }
-    }
+    };
+
+    const onCommentSubmit = async (e) => {
+        e.preventDefault();
+
+        const result = await movieService.addComment(movieId, {
+            userEmail,
+            userId,
+            comment,
+        });
+        setMovie(state => ({ ...state, comments: { ...state.comments, [result._id]: result } }));
+        setComment('');
+    };
 
     return (
         <section className='movie-details'>
@@ -59,10 +72,25 @@ export const Details = () => {
             <div className='details-comments'>
                 <h2>Comments:</h2>
                 <ul>
-                    <li className='comment'></li>
+                    {movie.comments?.map(x => (
+                        <li key={x.userEmail} className='comment'>
+                            <p>{x._ownerId}: {x.comment}</p>
+                        </li>
+                    ))}
+                    {!movie.comments?.length && (
+                        <p className='no-comment'>No comments.</p>
+                    )}
                 </ul>
-                <p>No comments.</p>
             </div>
+            {isAuthenticated && (
+                <article className='comment-article'>
+                    <label>Add new comment</label>
+                    <form className='comment-form' onSubmit={onCommentSubmit}>
+                        <textarea name='comment' placeholder='Comment....' value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+                        <input className='comment-submit' type='submit' value='Add Comment'></input>
+                    </form>
+                </article>
+            )}
         </section>
     );
 };
