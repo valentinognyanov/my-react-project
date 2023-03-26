@@ -49,7 +49,7 @@ export const Details = () => {
 
         dispatch({
             type: 'COMMENT_ADD',
-            payload: { ...response, email: userEmail },
+            payload: {...response, email: userEmail},
         });
     };
 
