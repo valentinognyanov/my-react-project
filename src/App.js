@@ -32,7 +32,7 @@ function App() {
             .then(res => {
                 setMovies(res)
             })
-    }, []);
+    });
 
     const onCreateMovieSubmit = async (data) => {
         const newMovie = await movieService.create(data);
@@ -61,7 +61,7 @@ function App() {
                         <Route path='/*' element={<PageNotFound />} />
                         <Route path='/' element={<Home />} />
                         <Route path='/catalog' element={<Catalog movies={movies} />} />
-                        <Route path='/edit/:movieId' element={<Edit onMovieEditSubmit={onMovieEditSubmit } />} />
+                        <Route path='/edit/:movieId' element={<Edit onMovieEditSubmit={onMovieEditSubmit} />} />
                         <Route path='/details/:movieId' element={<Details />} />
                         <Route path='/search' element={<Search />} />
                         <Route path='/create' element={<Create onCreateMovieSubmit={onCreateMovieSubmit} />} />

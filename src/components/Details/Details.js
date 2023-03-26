@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
-import { useService } from '../../hooks/useService';
 import * as commentService from '../../services/commentService';
+import { useService } from '../../hooks/useService';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { movieServiceFactory } from '../../services/movieService';
+import { movieReducer } from '../../reducers/movieReducer';
 
 import { AddComment } from './AddComment';
 
@@ -13,7 +14,7 @@ import './Details.css';
 export const Details = () => {
     const { movieId } = useParams();
     const { userId, isAuthenticated, userEmail } = useAuthContext();
-    const [movie, setMovie] = useState({});
+    const [movie, dispatch] = useReducer(movieReducer, {});
     const movieService = useService(movieServiceFactory);
     const navigate = useNavigate();
 
@@ -22,10 +23,11 @@ export const Details = () => {
             movieService.getOne(movieId),
             commentService.getAllComments(movieId)
         ]).then(([movieData, comments]) => {
-            setMovie({
+            const movieState = {
                 ...movieData,
-                comments
-            });
+                comments,
+            };
+            dispatch({ type: 'MOVIE_FETCH', payload: movieState })
         });
     }, [movieId]);
 
@@ -45,18 +47,10 @@ export const Details = () => {
     const onCommentSubmit = async (values) => {
         const response = await commentService.create(movieId, values.comment);
 
-        setMovie(state => ({
-            ...state,
-            comments: [
-                ...state.comments,
-                {
-                    ...response,
-                    author: {
-                        email: userEmail
-                    }
-                }
-            ]
-        }));
+        dispatch({
+            type: 'COMMENT_ADD',
+            payload: { ...response, email: userEmail },
+        });
     };
 
     return (
