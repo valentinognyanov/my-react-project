@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import { authServiceFactory } from './services/authService';
 import { movieServiceFactory } from './services/movieService';
-import { AuthContext } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 import { MainNavigation } from './components/Navigation/MainNavigation';
 import { Home } from './components/Home/Home';
@@ -24,18 +23,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-    const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
-    const [auth, setAuth] = useState({});
-    const movieService = movieServiceFactory(auth.accessToken);
-    const authService = authServiceFactory(auth.accessToken);
+    const movieService = movieServiceFactory(); // auth.accessToken
+    const navigate = useNavigate();
 
     useEffect(() => {
         movieService.getAll()
             .then(res => {
                 setMovies(res)
             })
-    }, [movies]);
+    }, []);
 
     const onCreateMovieSubmit = async (data) => {
         const newMovie = await movieService.create(data);
@@ -45,64 +42,16 @@ function App() {
         navigate('/catalog');
     };
 
-    const onLoginSubmit = async (data) => {
-
-        try {
-            const result = await authService.login(data);
-
-            setAuth(result);
-
-            navigate('/');
-            return result;
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
-
-    const onRegisterSubmit = async (values) => {
-        const { repeatPassword, ...registerData } = values;
-
-        if (repeatPassword !== registerData.password) {
-            return;
-        }
-
-        try {
-            const result = await authService.register(registerData);
-
-            setAuth(result);
-
-            navigate('/')
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
-
-    const onLogout = async () => {
-        await authService.logout();
-
-        setAuth({});
-    };
-
     const onMovieEditSubmit = async (values) => {
         const result = await movieService.edit(values._id, values);
 
         setMovies(state => state.map(x => x._id === values._id ? result : x))
 
         navigate(`/details/${values._id}`);
-    }
-
-    const context = {
-        onLoginSubmit,
-        onRegisterSubmit,
-        onLogout,
-        userId: auth._id,
-        token: auth.accessToken,
-        userEmail: auth.email,
-        isAuthenticated: !!auth.accessToken,
     };
 
     return (
-        <AuthContext.Provider value={context}>
+        <AuthProvider>
             <div className="App">
                 <header className="App-header">
                     <MainNavigation />
@@ -125,7 +74,7 @@ function App() {
                 </main>
                 <Footer />
             </div>
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 }
 
