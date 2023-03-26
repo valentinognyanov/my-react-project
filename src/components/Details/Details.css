@@ -76,6 +76,7 @@
 
 .no-comment {
     font-size: 24px;
+    text-align: center !important;
 }
 
 .comment-article label {
