@@ -12,7 +12,7 @@ import './Details.css';
 
 export const Details = () => {
     const { movieId } = useParams();
-    const { userId, userEmail, isAuthenticated } = useAuthContext();
+    const { userId, isAuthenticated, userEmail } = useAuthContext();
     const [movie, setMovie] = useState({});
     const movieService = useService(movieServiceFactory);
     const navigate = useNavigate();
@@ -48,7 +48,15 @@ export const Details = () => {
 
         setMovie(state => ({
             ...state,
-            comments: [...state.comments, response]
+            comments: [
+                ...state.comments,
+                {
+                    ...response,
+                    author: {
+                        email: userEmail
+                    }
+                }
+            ]
         }));
     };
 
@@ -77,8 +85,8 @@ export const Details = () => {
                 <h2>Comments:</h2>
                 <ul>
                     {movie.comments && movie.comments?.map(x => (
-                        <li key={x._ownerId} className='comment'>
-                            <p>{x.userEmail}: {x.comment}</p>
+                        <li key={x._id} className='comment'>
+                            <p>{x.author.email}: {x.comment}</p>
                         </li>
                     ))}
                     {!movie.comments?.length && (
