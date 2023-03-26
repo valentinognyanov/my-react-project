@@ -30,7 +30,6 @@ export const Details = () => {
     }, [movieId]);
 
     const isOwner = movie._ownerId === userId;
-    // const isAuthenticated = !!userId;
 
     const onDeleteClick = async () => {
 
