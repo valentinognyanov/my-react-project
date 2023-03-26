@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 
 import './Create.css';
@@ -5,6 +6,7 @@ import './Create.css';
 export const Create = ({
     onCreateMovieSubmit,
 }) => {
+    const [genres, setGenres] = useState([]);
     const { values, changeHandler, onSubmit } = useForm({
         title: '',
         year: '',
@@ -17,13 +19,20 @@ export const Create = ({
 
     }, onCreateMovieSubmit);
 
-    // const onChangeGenreHandler = (e) => {
-    //     if (e.target.checked) {
-    //         setValues(state => ({...state, genres: e.target.id}))
-    //     } else {
-    //         setValues(values.filter(x => x.genres.id !== e.target.id));
-    //     }
-    // };
+    const onChangeGenreHandler = (e) => {
+        e.preventDefault();
+
+        const { value, checked } = e.target;
+
+        if (checked) {
+            setGenres(state => [...state, value]);
+        } else {
+            setGenres(state => {
+                return [...state.filter(x => x !== value)];
+            });
+        }
+        values.genres = genres;
+    };
 
     return (
         <div className='create-div'>
@@ -47,27 +56,27 @@ export const Create = ({
                     <div className='ganres-checkbox'>
                         <div>
                             <h5>Genres</h5>
-                            <input type="checkbox" name="genres" id="comedy" /><label htmlFor="comedy">Comedy</label>
-                            <input type="checkbox" name="genres" id="fantasy" /><label htmlFor="fantasy">Fantasy</label>
-                            <input type="checkbox" name="genres" id="crime" /><label htmlFor="crime">Crime</label>
-                            <input type="checkbox" name="genres" id="drama" /><label htmlFor="drama">Drama</label>
-                            <input type="checkbox" name="genres" id="music" /><label htmlFor="music">Music</label>
-                            <input type="checkbox" name="genres" id="adventure" /><label htmlFor="adventure">Adventure</label>
-                            <input type="checkbox" name="genres" id="history" /><label htmlFor="history">History</label>
-                            <input type="checkbox" name="genres" id="thriller" /><label htmlFor="thriller">Thriller</label>
-                            <input type="checkbox" name="genres" id="animation" /><label htmlFor="animation">Animation</label>
-                            <input type="checkbox" name="genres" id="family" /><label htmlFor="family">Family</label>
-                            <input type="checkbox" name="genres" id="mystery" /><label htmlFor="mystery">Mystery</label>
-                            <input type="checkbox" name="genres" id="biography" /><label htmlFor="biography">Biography</label>
-                            <input type="checkbox" name="genres" id="action" /><label htmlFor="action">Action</label>
-                            <input type="checkbox" name="genres" id="filmNoir" /><label htmlFor="filmNoir">Film-Noir</label>
-                            <input type="checkbox" name="genres" id="romance" /><label htmlFor="romance">Romance</label>
-                            <input type="checkbox" name="genres" id="sciFi" /><label htmlFor="sciFi">Sci-Fi</label>
-                            <input type="checkbox" name="genres" id="war" /><label htmlFor="war">War</label>
-                            <input type="checkbox" name="genres" id="western" /><label htmlFor="western">Western</label>
-                            <input type="checkbox" name="genres" id="horror" /><label htmlFor="horror">Horror</label>
-                            <input type="checkbox" name="genres" id="musical" /><label htmlFor="musical">Musical</label>
-                            <input type="checkbox" name="genres" id="sport" /><label htmlFor="sport">Sport</label>
+                            <input type="checkbox" id="comedy" value="comedy" onChange={onChangeGenreHandler} /><label htmlFor="comedy">Comedy</label>
+                            <input type="checkbox" id="fantasy" value="fantasy" onChange={onChangeGenreHandler} /><label htmlFor="fantasy">Fantasy</label>
+                            <input type="checkbox" id="crime" value="crime" onChange={onChangeGenreHandler} /><label htmlFor="crime">Crime</label>
+                            <input type="checkbox" id="drama" value="drama" onChange={onChangeGenreHandler} /><label htmlFor="drama">Drama</label>
+                            <input type="checkbox" id="music" value="music" onChange={onChangeGenreHandler} /><label htmlFor="music">Music</label>
+                            <input type="checkbox" id="adventure" value="adventure" onChange={onChangeGenreHandler} /><label htmlFor="adventure">Adventure</label>
+                            <input type="checkbox" id="history" value="history" onChange={onChangeGenreHandler} /><label htmlFor="history">History</label>
+                            <input type="checkbox" id="thriller" value="thriller" onChange={onChangeGenreHandler} /><label htmlFor="thriller">Thriller</label>
+                            <input type="checkbox" id="animation" value="animation" onChange={onChangeGenreHandler} /><label htmlFor="animation">Animation</label>
+                            <input type="checkbox" id="family" value="family" onChange={onChangeGenreHandler} /><label htmlFor="family">Family</label>
+                            <input type="checkbox" id="mystery" value="mystery" onChange={onChangeGenreHandler} /><label htmlFor="mystery">Mystery</label>
+                            <input type="checkbox" id="biography" value="biography" onChange={onChangeGenreHandler} /><label htmlFor="biography">Biography</label>
+                            <input type="checkbox" id="action" value="action" onChange={onChangeGenreHandler} /><label htmlFor="action">Action</label>
+                            <input type="checkbox" id="filmNoir" value="filmNoir" onChange={onChangeGenreHandler} /><label htmlFor="filmNoir">Film-Noir</label>
+                            <input type="checkbox" id="romance" value="romance" onChange={onChangeGenreHandler} /><label htmlFor="romance">Romance</label>
+                            <input type="checkbox" id="sciFi" value="sciFi" onChange={onChangeGenreHandler} /><label htmlFor="sciFi">Sci-Fi</label>
+                            <input type="checkbox" id="war" value="war" onChange={onChangeGenreHandler} /><label htmlFor="war">War</label>
+                            <input type="checkbox" id="western" value="western" onChange={onChangeGenreHandler} /><label htmlFor="western">Western</label>
+                            <input type="checkbox" id="horror" value="horror" onChange={onChangeGenreHandler} /><label htmlFor="horror">Horror</label>
+                            <input type="checkbox" id="musical" value="musical" onChange={onChangeGenreHandler} /><label htmlFor="musical">Musical</label>
+                            <input type="checkbox" id="sport" value="sport" onChange={onChangeGenreHandler} /><label htmlFor="sport">Sport</label>
                         </div>
                     </div>
                     <input type="submit" id='submit' value="Submit" />
