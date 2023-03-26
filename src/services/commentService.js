@@ -5,9 +5,10 @@ const baseUrl = 'http://localhost:3030/data/comments';
 const request = requestFactory();
 
 export const getAllComments = async (movieId) => {
-    const query = encodeURIComponent(`movieId="${movieId}"`);
+    const searchQuery = encodeURIComponent(`movieId="${movieId}"`);
+    const relationQuery = encodeURIComponent(`author=_ownerId:users`)
 
-    const result = await request.get(`${baseUrl}?where=${query}`);
+    const result = await request.get(`${baseUrl}?where=${searchQuery}&load=${relationQuery}`);
     const comments = Object.values(result);
 
     return comments;
