@@ -1,33 +1,40 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import { useService } from '../../hooks/useService';
-
-import { AuthContext } from '../../contexts/AuthContext';
+import * as commentService from '../../services/commentService';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { movieServiceFactory } from '../../services/movieService';
+
+import { AddComment } from './AddComment';
+
 import './Details.css';
 
 export const Details = () => {
-    const { userId, userEmail } = useContext(AuthContext);
-    const [comment, setComment] = useState('');
     const { movieId } = useParams();
+    const { userId, userEmail, isAuthenticated } = useAuthContext();
     const [movie, setMovie] = useState({});
     const movieService = useService(movieServiceFactory);
     const navigate = useNavigate();
 
     useEffect(() => {
-        movieService.getOne(movieId)
-            .then(result => {
-                setMovie(result);
-            })
+        Promise.all([
+            movieService.getOne(movieId),
+            commentService.getAllComments(movieId)
+        ]).then(([movieData, comments]) => {
+            setMovie({
+                ...movieData,
+                comments
+            });
+        });
     }, [movieId]);
 
     const isOwner = movie._ownerId === userId;
-    const isAuthenticated = !!userId;
+    // const isAuthenticated = !!userId;
 
     const onDeleteClick = async () => {
 
-        const confirmation = window.confirm('Are you sure you want to delete the movie ?');
+        let confirmation = window.confirm('Are you sure you want to delete the movie ?');
 
         if (confirmation) {
             await movieService.delete(movie._id);
@@ -36,16 +43,13 @@ export const Details = () => {
         }
     };
 
-    const onCommentSubmit = async (e) => {
-        e.preventDefault();
+    const onCommentSubmit = async (values) => {
+        const response = await commentService.create(movieId, values.comment);
 
-        const result = await movieService.addComment(movieId, {
-            userEmail,
-            userId,
-            comment,
-        });
-        setMovie(state => ({ ...state, comments: { ...state.comments, [result._id]: result } }));
-        setComment('');
+        setMovie(state => ({
+            ...state,
+            comments: [...state.comments, response]
+        }));
     };
 
     return (
@@ -72,9 +76,9 @@ export const Details = () => {
             <div className='details-comments'>
                 <h2>Comments:</h2>
                 <ul>
-                    {movie.comments?.map(x => (
-                        <li key={x.userEmail} className='comment'>
-                            <p>{x._ownerId}: {x.comment}</p>
+                    {movie.comments && movie.comments?.map(x => (
+                        <li key={x._ownerId} className='comment'>
+                            <p>{x.userEmail}: {x.comment}</p>
                         </li>
                     ))}
                     {!movie.comments?.length && (
@@ -82,15 +86,7 @@ export const Details = () => {
                     )}
                 </ul>
             </div>
-            {isAuthenticated && (
-                <article className='comment-article'>
-                    <label>Add new comment</label>
-                    <form className='comment-form' onSubmit={onCommentSubmit}>
-                        <textarea name='comment' placeholder='Comment....' value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
-                        <input className='comment-submit' type='submit' value='Add Comment'></input>
-                    </form>
-                </article>
-            )}
+            {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
         </section>
     );
 };
