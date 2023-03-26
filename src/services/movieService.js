@@ -23,12 +23,6 @@ export const movieServiceFactory = (token) => {
         return result;
     };
 
-    const addComment = async (movieId, data) => {
-        const result = await request.post(`${baseUrl}/${movieId}/comments`, data);
-
-        return result;
-    };
-
     const edit = async (movieId, data) => request.put(`${baseUrl}/${movieId}`, data);
 
     const del = (movieId) => request.del(`${baseUrl}/${movieId}`);
@@ -39,6 +33,5 @@ export const movieServiceFactory = (token) => {
         create,
         edit,
         delete: del,
-        addComment
     };
 };
