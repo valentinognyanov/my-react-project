@@ -15,7 +15,7 @@ export const getAllComments = async (movieId) => {
 };
 
 export const create = async (movieId, comment) => {
-    const result = await request.post(baseUrl, {movieId, comment});
+    const result = await request.post(baseUrl, { movieId, comment });
 
     return result;
 };
