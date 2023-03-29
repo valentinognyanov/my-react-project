@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { useMovieContext } from '../../contexts/MovieContext';
 import { useForm } from '../../hooks/useForm';
 
 import './Create.css';
 
-export const Create = ({
-    onCreateMovieSubmit,
-}) => {
+export const Create = () => {
+    const { onCreateMovieSubmit } = useMovieContext();
     const [genres, setGenres] = useState([]);
     const { values, changeHandler, onSubmit } = useForm({
         title: '',
