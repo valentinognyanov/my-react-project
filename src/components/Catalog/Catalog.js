@@ -1,10 +1,12 @@
-import { Card } from './Card';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Catalog.css';
+import { useMovieContext } from '../../contexts/MovieContext';
 
-export const Catalog = ({
-    movies,
-}) => {
+import { Card } from './Card';
+import './Catalog.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+export const Catalog = () => {
+    const { movies } = useMovieContext();
+
     return (
         <section className='catalog-body'>
             {movies.map(x => <Card key={x._id} {...x} />)}
