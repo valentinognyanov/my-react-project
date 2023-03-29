@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { useService } from "../../hooks/useService"; 
+import { useService } from "../../hooks/useService";
 import { useForm } from "../../hooks/useForm";
 import { movieServiceFactory } from "../../services/movieService";
+import { useMovieContext } from "../../contexts/MovieContext";
 
-export const Edit = ({
-    onMovieEditSubmit,
-}) => {
+export const Edit = () => {
+    const { onMovieEditSubmit } = useMovieContext();
     const { movieId } = useParams();
     const movieService = useService(movieServiceFactory)
     const { values, changeHandler, onSubmit, changeValues } = useForm({
@@ -34,7 +34,7 @@ export const Edit = ({
             <h3>Edit</h3>
             <div className='create-form'>
                 <form id='create-form' method='POST' onSubmit={onSubmit}>
-                    <input value={values.title} onChange={changeHandler}  type="text" id="title" name="title" placeholder="Title.." />
+                    <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" placeholder="Title.." />
 
                     <input value={values.year} onChange={changeHandler} type="number" id="year" name="year" placeholder="Year.." />
 
@@ -46,7 +46,7 @@ export const Edit = ({
 
                     <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="ImageUrl.." />
 
-                    <textarea value={values.plot} onChange={changeHandler}  type="text" id="plot" name="plot" placeholder="Plot.." />
+                    <textarea value={values.plot} onChange={changeHandler} type="text" id="plot" name="plot" placeholder="Plot.." />
 
                     <div className='ganres-checkbox'>
                         <div>
