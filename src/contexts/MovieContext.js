@@ -37,6 +37,10 @@ export const MovieProvider = ({
 
     const getMovie = (movieId) => {
         return movies.find(movie => movie._id === movieId);
+    };
+
+    const deleteMovie = (movieId) => {
+        setMovies(state => state.filter(movie => movie._id !== movieId));
     }
 
     const context = {
@@ -44,6 +48,7 @@ export const MovieProvider = ({
         onCreateMovieSubmit,
         onMovieEditSubmit,
         getMovie,
+        deleteMovie,
     };
 
     return (

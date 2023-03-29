@@ -21,6 +21,7 @@ import { Footer } from './components/Footer/Footer';
 import { RouteGuard } from './components/common/RouteGuards';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MovieOwner } from './components/common/MovieOwner';
 
 function App() {
 
@@ -36,7 +37,11 @@ function App() {
                             <Route path='/*' element={<PageNotFound />} />
                             <Route path='/' element={<Home />} />
                             <Route path='/catalog' element={<Catalog />} />
-                            <Route path='/edit/:movieId' element={<Edit />} />
+                            <Route path='/edit/:movieId' element={
+                                <MovieOwner>
+                                    <Edit />
+                                </MovieOwner>
+                            } />
                             <Route path='/details/:movieId' element={<Details />} />
                             <Route path='/search' element={<Search />} />
                             <Route path='/create' element={
@@ -44,7 +49,11 @@ function App() {
                                     <Create />
                                 </RouteGuard>
                             } />
-                            <Route path='/profile/:userId' element={<Profile />} />
+                            <Route path='/profile/:userId' element={
+                                <RouteGuard>
+                                    <Profile />
+                                </RouteGuard>
+                            } />
                             <Route path='/about' element={<About />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/login' element={<Login />} />

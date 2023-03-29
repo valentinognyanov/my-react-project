@@ -10,9 +10,9 @@ export const MovieOwner = ({
     const { getMovie } = useMovieContext();
     const { userId } = useAuthContext();
 
-    const currentMovie = getMovie();
+    const currentMovie = getMovie(movieId);
 
-    if (currentMovie._ownerId !== userId) {
+    if (currentMovie && currentMovie._ownerId !== userId) {
         return <Navigate to={`/catalog/${movieId}`} />
     }
 
@@ -20,5 +20,5 @@ export const MovieOwner = ({
         <>
             {children}
         </>
-    )
-}
+    );
+};

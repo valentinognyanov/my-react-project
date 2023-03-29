@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import * as commentService from '../../services/commentService';
 import { useService } from '../../hooks/useService';
+import { useMovieContext } from '../../contexts/MovieContext';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { movieServiceFactory } from '../../services/movieService';
 import { movieReducer } from '../../reducers/movieReducer';
@@ -14,6 +15,7 @@ import './Details.css';
 export const Details = () => {
     const { movieId } = useParams();
     const { userId, isAuthenticated, userEmail } = useAuthContext();
+    const { deleteMovie } = useMovieContext();
     const [movie, dispatch] = useReducer(movieReducer, {});
     const movieService = useService(movieServiceFactory);
     const navigate = useNavigate();
@@ -35,10 +37,12 @@ export const Details = () => {
 
     const onDeleteClick = async () => {
 
-        let confirmation = window.confirm('Are you sure you want to delete the movie ?');
+        let confirmation = window.confirm(`Are you sure you want to delete ${movie.title} (${movie.year})?`);
 
         if (confirmation) {
             await movieService.delete(movie._id);
+
+            deleteMovie(movie._id);
 
             navigate('/catalog');
         }
@@ -47,10 +51,7 @@ export const Details = () => {
     const onCommentSubmit = async (values) => {
         const response = await commentService.create(movieId, values.comment);
 
-        dispatch({
-            type: 'COMMENT_ADD',
-            payload: { ...response, email: userEmail },
-        });
+        dispatch({ type: 'COMMENT_ADD', payload: { ...response, email: userEmail } });
     };
 
     return (
