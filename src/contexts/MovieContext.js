@@ -12,7 +12,7 @@ export const MovieProvider = ({
     const movieService = movieServiceFactory();
     const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(async () => {
         movieService.getAll()
             .then(res => {
                 setMovies(res)
@@ -20,6 +20,49 @@ export const MovieProvider = ({
     }, []);
 
     const onCreateMovieSubmit = async (data) => {
+        const {
+            title,
+            year,
+            runtime,
+            director,
+            actors,
+            imageUrl,
+            plot,
+            genres
+        } = data;
+
+        if (title === '') {
+            throw ({ message: 'Title should be filled.' });
+        } else if (title.length <= 2) {
+            throw ({ message: 'Tittle should be at least 3 charachters' });
+        }
+        if (year === '') {
+            throw ({ message: 'Year should be filled.' });
+        }
+        if (runtime === '') {
+            throw ({ message: 'Runtime should be filled.' });
+        }
+        if (director === '') {
+            throw ({ message: 'Director should be filled.' });
+        } else if (director.length < 5) {
+            throw ({ message: 'Director should be at least 5 characters.' });
+        }
+        if (actors === '') {
+            throw ({ message: 'Actors should be filled.' });
+        } else if (actors.length < 5) {
+            throw ({ message: 'Actors should be at least 5 characters.' });
+        }
+        if (imageUrl === '') {
+            throw ({ message: 'Image URL should be filled.' });
+        }
+        if (plot === '') {
+            throw ({ message: 'Plot should be filled.' });
+        } else if (plot.length < 10) {
+            throw ({ message: 'Plot should be at least 10 charachters.' });
+        }
+        // if (genres.length === 0) {
+        //     throw ({ message: 'At least one genre should be chosen.' });
+        // }
         const newMovie = await movieService.create(data);
 
         setMovies(movies => [...movies, newMovie]);
