@@ -1,21 +1,33 @@
 import { requestFactory } from './requester';
 
-const baseUrl = 'http://localhost:3030/data/comments';
+const host = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3030'
+    : 'http://localhost:3030'; // production host url
+const url = `${host}/data/comments`;
 
-const request = requestFactory();
 
-export const getAllComments = async (movieId) => {
-    const searchQuery = encodeURIComponent(`movieId="${movieId}"`);
-    const relationQuery = encodeURIComponent(`author=_ownerId:users`)
+export const commentServiceFactory = () => {
+    const request = requestFactory();
 
-    const result = await request.get(`${baseUrl}?where=${searchQuery}&load=${relationQuery}`);
-    const comments = Object.values(result);
+    const getAllComments = async (movieId) => {
+        const searchQuery = encodeURIComponent(`movieId="${movieId}"`);
+        const relationQuery = encodeURIComponent(`author=_ownerId:users`);
 
-    return comments;
+        const result = await request.get(`${url}?where=${searchQuery}&load=${relationQuery}`);
+        const comments = Object.values(result);
+
+        return comments;
+    };
+
+    const create = async (movieId, comment) => {
+        const result = await request.post(url, { movieId, comment });
+
+        return result;
+    };
+
+    return {
+        getAllComments,
+        create,
+    };
 };
 
-export const create = async (movieId, comment) => {
-    const result = await request.post(baseUrl, { movieId, comment });
-
-    return result;
-};
