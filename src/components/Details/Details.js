@@ -1,11 +1,11 @@
 import { useEffect, useReducer } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
-import * as commentService from '../../services/commentService';
 import { useService } from '../../hooks/useService';
 import { useMovieContext } from '../../contexts/MovieContext';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { movieServiceFactory } from '../../services/movieService';
+import { commentServiceFactory } from '../../services/commentService';
 import { movieReducer } from '../../reducers/movieReducer';
 
 import { AddComment } from './AddComment';
@@ -18,6 +18,7 @@ export const Details = () => {
     const { deleteMovie } = useMovieContext();
     const [movie, dispatch] = useReducer(movieReducer, {});
     const movieService = useService(movieServiceFactory);
+    const commentService = useService(commentServiceFactory);
     const navigate = useNavigate();
 
     useEffect(() => {
