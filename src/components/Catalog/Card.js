@@ -11,8 +11,8 @@ export const Card = ({
         <div className="wrapper">
             <div className="card"><img src={imageUrl} alt={_id} />
                 <div className="info">
-                    <h1>{`${title} (${year})`}</h1>
-                    <p>{genres.join(', ')}</p>
+                    <h1 data-testid="title">{`${title} (${year})`}</h1>
+                    <p data-testid="genres">{genres}</p>
                     <Link to={`/details/${_id}`}>Details</Link>
                 </div>
             </div>
