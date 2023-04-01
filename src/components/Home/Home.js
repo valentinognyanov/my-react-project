@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import { LastThreeMovies } from './LastThreeMovies';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
@@ -11,7 +12,6 @@ export const Home = () => {
         fetch(`http://localhost:3030/data/movies`)
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 setLatestMovies(result);
             })
     }, []);
@@ -19,21 +19,12 @@ export const Home = () => {
     return (
         <section id="welcome-section">
             <div id="welcome-message">
-                <h2>Welcome to My Movie Library :)</h2>
+                <h1>Welcome to My Movie Library :)</h1>
             </div>
 
             <div id="home-page">
-                <h1>Last three uploaded movies</h1>
-                {latestMovies.slice(-3).map(movie => (
-                    <div className="wrapper">
-                        <div className="card"><img src={movie.imageUrl} alt={movie._id} />
-                            <div className="info">
-                                <h1 data-testid="title">{`${movie.title} (${movie.year})`}</h1>
-                                <Link to={`/details/${movie._id}`}>Details</Link>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                <h2>Last three uploaded movies</h2>
+                {latestMovies.slice(-3).map(movie => <LastThreeMovies {...movie} />)}
                 {latestMovies.length === 0 && (<p className='no-movies-home'>No movies yet...</p>)}
             </div>
         </section>

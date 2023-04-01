@@ -69,7 +69,7 @@
 
 .card .info h1 {
     margin: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
     font-size: 20px;
 }
 
