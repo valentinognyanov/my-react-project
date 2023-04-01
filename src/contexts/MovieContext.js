@@ -12,7 +12,7 @@ export const MovieProvider = ({
     const movieService = movieServiceFactory();
     const navigate = useNavigate();
 
-    useEffect(async () => {
+    useEffect(() => {
         movieService.getAll()
             .then(res => {
                 setMovies(res)
@@ -27,8 +27,7 @@ export const MovieProvider = ({
             director,
             actors,
             imageUrl,
-            plot,
-            genres
+            plot
         } = data;
 
         if (title === '') {
