@@ -30,11 +30,20 @@ export const movieServiceFactory = (token) => {
 
     const del = (movieId) => request.del(`${url}/${movieId}`);
 
+    const search = async (input) => {
+        const searchQuery = encodeURIComponent(`title LIKE "${input}"`);
+        const result = await request.get(`${url}?where=${searchQuery}`);
+        const movies = Object.values(result);
+        
+        return movies;
+    };
+
     return {
         getAll,
         getOne,
         create,
         edit,
         delete: del,
+        search,
     };
 };
