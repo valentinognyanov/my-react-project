@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { LastThreeMovies } from './LastThreeMovies';
+import { LastFiveMovies } from './LastFiveMovies';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
@@ -19,12 +19,15 @@ export const Home = () => {
     return (
         <section id="welcome-section">
             <div id="welcome-message">
-                <h1>Welcome to My Movie Library :)</h1>
+                <h1>Welcome to My Movie Library</h1>
+            </div>
+            <div id="welcome-image">
+                <img src="/images/home-page-img.png" />
             </div>
 
             <div id="home-page">
-                <h2>Last three uploaded movies</h2>
-                {latestMovies.slice(-3).map(movie => <LastThreeMovies {...movie} />)}
+                <h2>Last five uploaded movies</h2>
+                {latestMovies.slice(-5).map(movie => <LastFiveMovies key={movie._id} {...movie} />)}
                 {latestMovies.length === 0 && (<p className='no-movies-home'>No movies yet...</p>)}
             </div>
         </section>
