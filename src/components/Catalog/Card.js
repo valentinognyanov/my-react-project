@@ -12,7 +12,7 @@ export const Card = ({
             <div className="card"><img src={imageUrl} alt={_id} />
                 <div className="info">
                     <h1 data-testid="title">{`${title} (${year})`}</h1>
-                    <p data-testid="genres">{genres}</p>
+                    <p data-testid="genres">{genres?.join(', ')}</p>
                     <Link to={`/details/${_id}`}>Details</Link>
                 </div>
             </div>

@@ -54,7 +54,7 @@ export const Details = () => {
 
         dispatch({ type: 'COMMENT_ADD', payload: { ...response, email: userEmail } });
     };
-
+    
     return (
         <section className='movie-details'>
             <h3 className='title'>{movie.title} ({movie.year})</h3>
@@ -65,7 +65,7 @@ export const Details = () => {
                         <span className='director'>•Director: {movie.director}</span><br></br>
                         <span className='actors'>•Actors: {movie.actors}</span><br></br>
                         <span className='runtime'>•Runtime: {movie.runtime}</span>
-                        <p className='genre'>•Genre: {movie.genres}</p>
+                        <p className='genre'>•Genre: {movie.genres?.join(', ')}</p>
                         <p className='plot'>•Plot: {movie.plot}</p>
                     </div>
                     {isOwner && (
