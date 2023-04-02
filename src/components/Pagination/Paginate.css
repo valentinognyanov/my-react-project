@@ -7,7 +7,22 @@
     position: absolute;
 }
 
-.pagination-ul {
-    border-color: aliceblue;
+.pagination-ul button {
+    font-size: 15px;
+    padding: 0.6rem;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    background: #68c950;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
+    transition: 0.4s ease;
+    margin-left: 5px;
+}
+
+.pagination-ul button:hover {
+    background: #282c34;
+    color: white;
 }
