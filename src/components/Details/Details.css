@@ -104,3 +104,10 @@
     padding-right: 6px;
     padding-bottom: 6px;
 }
+
+.comment p button {
+    float: right;
+    background: none;
+    font-size: 14px;
+    margin-right: 10px;
+}

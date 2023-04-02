@@ -54,7 +54,7 @@ export const Details = () => {
 
         dispatch({ type: 'COMMENT_ADD', payload: { ...response, email: userEmail } });
     };
-    
+
     return (
         <section className='movie-details'>
             <h3 className='title'>{movie.title} ({movie.year})</h3>
@@ -81,7 +81,9 @@ export const Details = () => {
                 <ul>
                     {movie.comments && movie.comments?.map(x => (
                         <li key={x._id} className='comment'>
-                            <p>{x.author.email}: {x.comment}</p>
+                            <p>{x.author.email}: {x.comment}
+                                <button className='delete-comment-btn'>Delete</button>
+                            </p>
                         </li>
                     ))}
                     {!movie.comments?.length && (
