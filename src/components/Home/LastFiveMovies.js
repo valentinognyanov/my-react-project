@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const LastThreeMovies = ({
+export const LastFiveMovies = ({
     _id,
     title,
     year,
