@@ -1,10 +1,9 @@
 .search {
-    width: 1800px;
-    position: relative;
+    margin-left: 30%;
 }
 
 .searchTerm {
-    width: 180px;
+    /* width: 180px; */
     border: 3px solid white;
     border-right: none;
     padding: 5px;
@@ -26,7 +25,20 @@
 }
 
 .wrap {
-    position: absolute;
-    margin-top: 50px;
-    margin-left: 30%;
+    margin-top: 40px;
+}
+
+.search-result {
+    margin-left: 20px;
+}
+
+.search-result p {
+    color: white;
+    font-size: 30px;
+    margin-left: 37%;
+    margin-top: 10%;
+}
+
+.pagination-ul button {
+    margin-bottom: 60px;
 }
