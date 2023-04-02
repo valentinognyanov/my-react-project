@@ -141,3 +141,10 @@
 #welcome-image img {
     margin-left: 18%;
 }
+
+.no-movies-home {
+    font-size: 40px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
