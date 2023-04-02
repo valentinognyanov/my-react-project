@@ -51,27 +51,27 @@ export const Edit = () => {
                     <div className='ganres-checkbox'>
                         <div>
                             <h5>Genres</h5>
-                            <input type="checkbox" id="comedy" /><label htmlFor="comedy">Comedy</label>
-                            <input type="checkbox" id="fantasy" /><label htmlFor="fantasy">Fantasy</label>
-                            <input type="checkbox" id="crime" /><label htmlFor="crime">Crime</label>
-                            <input type="checkbox" id="drama" /><label htmlFor="drama">Drama</label>
-                            <input type="checkbox" id="music" /><label htmlFor="music">Music</label>
-                            <input type="checkbox" id="adventure" /><label htmlFor="adventure">Adventure</label>
-                            <input type="checkbox" id="history" /><label htmlFor="history">History</label>
-                            <input type="checkbox" id="thriller" /><label htmlFor="thriller">Thriller</label>
-                            <input type="checkbox" id="animation" /><label htmlFor="animation">Animation</label>
-                            <input type="checkbox" id="family" /><label htmlFor="family">Family</label>
-                            <input type="checkbox" id="mystery" /><label htmlFor="mystery">Mystery</label>
-                            <input type="checkbox" id="biography" /><label htmlFor="biography">Biography</label>
-                            <input type="checkbox" id="action" /><label htmlFor="action">Action</label>
-                            <input type="checkbox" id="filmNoir" /><label htmlFor="filmNoir">Film-Noir</label>
-                            <input type="checkbox" id="romance" /><label htmlFor="romance">Romance</label>
-                            <input type="checkbox" id="sciFi" /><label htmlFor="sciFi">Sci-Fi</label>
-                            <input type="checkbox" id="war" /><label htmlFor="war">War</label>
-                            <input type="checkbox" id="western" /><label htmlFor="western">Western</label>
-                            <input type="checkbox" id="horror" /><label htmlFor="horror">Horror</label>
-                            <input type="checkbox" id="musical" /><label htmlFor="musical">Musical</label>
-                            <input type="checkbox" id="sport" /><label htmlFor="sport">Sport</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="comedy">Comedy</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="fantasy">Fantasy</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="crime">Crime</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="drama">Drama</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="music">Music</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="adventure">Adventure</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="history">History</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="thriller">Thriller</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="animation">Animation</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="family">Family</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="mystery">Mystery</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="biography">Biography</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="action">Action</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="filmNoir">Film-Noir</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="romance">Romance</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="sciFi">Sci-Fi</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="war">War</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="western">Western</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="horror">Horror</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="musical">Musical</label>
+                            <input type="checkbox" id="genres" /><label htmlFor="sport">Sport</label>
                         </div>
                     </div>
                     <input type="submit" id='submit' value="Submit" />
