@@ -59,9 +59,7 @@ export const MovieProvider = ({
         } else if (plot.length < 10) {
             throw ({ message: 'Plot should be at least 10 charachters.' });
         }
-        // if (genres.length === 0) {
-        //     throw ({ message: 'At least one genre should be chosen.' });
-        // }
+        
         const newMovie = await movieService.create(data);
 
         setMovies(movies => [...movies, newMovie]);
