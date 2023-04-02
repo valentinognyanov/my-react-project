@@ -1,0 +1,13 @@
+.pagination-container {
+    float: left;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 85%;
+    margin-top: 30%;
+    position: absolute;
+}
+
+.pagination-ul {
+    border-color: aliceblue;
+    cursor: pointer;
+}
