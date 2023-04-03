@@ -34,7 +34,7 @@ export const movieServiceFactory = (token) => {
         const searchQuery = encodeURIComponent(`title LIKE "${input}"`);
         const result = await request.get(`${url}?where=${searchQuery}`);
         const movies = Object.values(result);
-        
+
         return movies;
     };
 
