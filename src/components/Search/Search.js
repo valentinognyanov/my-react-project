@@ -20,10 +20,6 @@ export const Search = () => {
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
     const currentMovie = foundMovies.slice(indexOfFirstMovie, indexOfLastMovie);
 
-    const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
     const previousPage = () => {
 
         if (currentPage !== 1) {
@@ -42,6 +38,7 @@ export const Search = () => {
 
         setInput(e.target.value);
     };
+
     const onSearchSubmit = async (e) => {
         e.preventDefault();
 
@@ -59,13 +56,10 @@ export const Search = () => {
                 {currentMovie?.map(movie => <SearchResultCard key={movie._id} {...movie} />)}
                 {currentMovie.length === 0 && <p>No movies found</p>}
             </div>
-            <Paginate
-                moviesPerPage={moviesPerPage}
-                totalMovies={movies.length}
-                paginate={paginate}
+            {currentMovie.length !== 0 ? <Paginate
                 previousPage={previousPage}
                 nextPage={nextPage}
-            />
+            /> : ''}
         </div>
     );
 };
