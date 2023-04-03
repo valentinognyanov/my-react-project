@@ -1,9 +1,6 @@
 import './Paginate.css';
 
 export const Paginate = ({
-    moviesPerPage,
-    totalMovies,
-    paginate,
     previousPage,
     nextPage,
 }) => {

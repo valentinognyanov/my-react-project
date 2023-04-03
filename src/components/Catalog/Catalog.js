@@ -16,10 +16,6 @@ export const Catalog = () => {
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
     const currentMovie = movies.slice(indexOfFirstMovie, indexOfLastMovie);
 
-    const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
     const previousPage = () => {
 
         if (currentPage !== 1) {
@@ -43,13 +39,11 @@ export const Catalog = () => {
                     <h2 className='no-movies'>There are no movies yet...</h2>
                 )}
             </section>
-            <Paginate
-                moviesPerPage={moviesPerPage}
-                totalMovies={movies.length}
-                paginate={paginate}
+
+            {currentMovie.length !== 0 ? <Paginate
                 previousPage={previousPage}
                 nextPage={nextPage}
-            />
+            /> : ''}
         </>
     );
 };
