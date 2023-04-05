@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import { useMovieContext } from '../../contexts/MovieContext';
-
 import { movieServiceFactory } from '../../services/movieService';
+
 import { SearchResultCard } from './SearchResultCard';
+import { Paginate } from '../Pagination/Paginate';
 
 import './Search.css';
-import { Paginate } from '../Pagination/Paginate';
 
 export const Search = () => {
     const movieService = movieServiceFactory();

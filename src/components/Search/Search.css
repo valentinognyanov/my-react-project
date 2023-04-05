@@ -42,3 +42,7 @@
 .pagination-ul button {
     margin-bottom: 60px;
 }
+
+p.genres {
+    margin-left: 2px;
+}
