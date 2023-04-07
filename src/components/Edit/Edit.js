@@ -34,19 +34,19 @@ export const Edit = () => {
             <h3>Edit</h3>
             <div className='create-form'>
                 <form id='create-form' method='POST' onSubmit={onSubmit}>
-                    <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" placeholder="Title.." />
+                    <input value={values.title} onChange={changeHandler} data-testid="title" type="text" id="title" name="title" placeholder="Title.." />
 
-                    <input value={values.year} onChange={changeHandler} type="number" id="year" name="year" placeholder="Year.." />
+                    <input value={values.year} onChange={changeHandler} data-testid="year" type="number" id="year" name="year" placeholder="Year.." />
 
-                    <input value={values.runtime} onChange={changeHandler} type="number" id="runtime" name="runtime" placeholder="Runtime.." />
+                    <input value={values.runtime} onChange={changeHandler} data-testid="runtime" type="number" id="runtime" name="runtime" placeholder="Runtime.." />
 
-                    <input value={values.director} onChange={changeHandler} type="text" id="director" name="director" placeholder="Director.." />
+                    <input value={values.director} onChange={changeHandler} data-testid="director" type="text" id="director" name="director" placeholder="Director.." />
 
-                    <input value={values.actors} onChange={changeHandler} type="text" id="actors" name="actors" placeholder="Actors.." />
+                    <input value={values.actors} onChange={changeHandler} data-testid="actors" type="text" id="actors" name="actors" placeholder="Actors.." />
 
-                    <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="ImageUrl.." />
+                    <input value={values.imageUrl} onChange={changeHandler} data-testid="imageUrl" type="text" id="imageUrl" name="imageUrl" placeholder="ImageUrl.." />
 
-                    <textarea value={values.plot} onChange={changeHandler} type="text" id="plot" name="plot" placeholder="Plot.." />
+                    <textarea value={values.plot} onChange={changeHandler} data-testid="plot" type="text" id="plot" name="plot" placeholder="Plot.." />
 
                     <div className='ganres-checkbox'>
                         <div>
