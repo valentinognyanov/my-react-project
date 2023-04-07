@@ -19,9 +19,9 @@ import { About } from './components/About/About';
 import { Footer } from './components/Footer/Footer';
 
 import { RouteGuard } from './components/common/RouteGuards';
+import { MovieOwner } from './components/common/MovieOwner';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MovieOwner } from './components/common/MovieOwner';
 
 function App() {
 
