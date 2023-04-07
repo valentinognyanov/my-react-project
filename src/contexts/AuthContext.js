@@ -17,7 +17,7 @@ export const AuthProvider = ({
         const { repeatPassword, ...registerData } = values;
 
         if (repeatPassword !== registerData.password) {
-            return;
+            return alert('Passwords must be the same.');
         }
 
         try {
@@ -27,7 +27,7 @@ export const AuthProvider = ({
 
             navigate('/');
         } catch (error) {
-            console.log(error.message);
+            alert(error.message);
         }
     };
 
@@ -41,7 +41,7 @@ export const AuthProvider = ({
             navigate('/');
             return result;
         } catch (error) {
-            console.log(error.message);
+            alert(error.message);
         }
     };
 
