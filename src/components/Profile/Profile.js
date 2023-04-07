@@ -34,8 +34,6 @@ export const Profile = () => {
         }
     };
 
-    console.log(ownMovies);
-
     return (
         <div className="profile-container">
             <h1 className="welcome-email">My Profile</h1>
