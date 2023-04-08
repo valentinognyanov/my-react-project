@@ -46,4 +46,4 @@ by Viktor Kostadinov more information [here](https://github.com/softuni-practice
 3. In terminal run npm start
 
 ## For Deploy
--In terminal run npm deploy (This will build a 'build' folder and deploy it.) 
+-In terminal npm run deploy (This will build a 'build' folder and deploy it.) 
