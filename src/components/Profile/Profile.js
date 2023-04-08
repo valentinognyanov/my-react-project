@@ -36,8 +36,9 @@ export const Profile = () => {
 
     return (
         <div className="profile-container">
-            <h1 className="welcome-email">My Profile</h1>
+            <h1 className="welcome-email">User Profile</h1>
             <div className="my-movies">
+                <h3 className='my-movies-h3'>My Movies</h3>
                 {currentMovie.length !== 0
                     ? currentMovie.map(movie => <OwnedMoviesCard key={movie._id} {...movie} />)
                     : <h2>You don't have uploaded movies yet...</h2>}
