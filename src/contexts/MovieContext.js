@@ -53,8 +53,6 @@ export const MovieProvider = ({
         }
         if (!imageUrl) {
             return alert('Image URL should be filled.');
-        } else if (!imageUrl.startsWith('http://' || 'https://')) {
-            return alert('Fill correct image URL.');
         }
         if (!plot) {
             return new Error('Plot should be filled.');
