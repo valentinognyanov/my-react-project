@@ -26,10 +26,10 @@ export const Login = () => {
                     <form className="form" method="POST" onSubmit={onSubmit}>
 
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" value={values.email} onChange={changeHandler} />
+                        <input data-testid="email-test" type="email" name="email" id="email" value={values.email} onChange={changeHandler} />
 
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" value={values.password} onChange={changeHandler} />
+                        <input data-testid="password-test" type="password" name="password" id="password" value={values.password} onChange={changeHandler} />
 
                         <input type="submit" id="submit" value="Login" />
                     </form>
